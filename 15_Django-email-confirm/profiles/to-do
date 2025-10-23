@@ -1,0 +1,45 @@
+{ half-done tassk written in this type of brakets }
+
+home page after the register -- change it 
+
+after login go to the home page 
+
+profile page album set karvani che 
+
+Important -- follow/unfollow --
+
+posts according to the follow list 
+
+search page design and the range of the filter --
+
+{
+    all albums -- list page 
+
+    create albums page 
+
+    albums details page 
+}
+
+{
+    from download page there should be a link to the image-info page 
+}
+
+My sale page have the -- same navbar as the project navbar.
+        -- change the header 
+        -- if the unique buyer can be fetch take it otherwise remove it from this 
+
+{
+    image-info page should have the link to add the image to the cart 
+}
+
+{
+    change the image form of the create/post image 
+}
+
+{
+    checkout page done just check it one time using the razor pay 
+    [And i think i should go to the download page after the successfull payment]
+}
+
+
+

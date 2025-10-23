@@ -1,0 +1,48 @@
+<!-- auctions.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Auctions</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Available Auctions</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Auction Start Date</th>
+                        <th>Auction End Date</th>
+                        <th>Auction Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for auction in auctions %}
+                    <tr>
+                        <td>
+                            <a href="/profiles/detauction?auction_id={{auction.auctionId}}">
+                            <img src="{{ auction.ImageId.url.url }}" alt="Auction Image" class="img-fluid">
+                            </a>
+                        </td>
+                        <td>{{ auction.Description }}</td>
+                        <td>{{ auction.AuctionStartDate }}</td>
+                        <td>{{ auction.AuctionEndDate }}</td>
+                        <td>{{ auction.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Bootstrap JS (optional, if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

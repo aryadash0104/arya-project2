@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Detail: {{ album.Title }}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .album-title {
+            margin-bottom: 30px;
+        }
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .image-item {
+            margin: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        .image-item:hover {
+            transform: scale(1.05);
+        }
+        .image-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="album-title">Album Detail: {{ album.Title }}</h1>
+        <div class="image-container">
+            {% for image in images %}
+            <div class="image-item col-md-4">
+                <a href="{% url 'image_info' image.imageid %}"><img src="{{ image.url.url }}" alt="{{ image.title }}" class="img-fluid"></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

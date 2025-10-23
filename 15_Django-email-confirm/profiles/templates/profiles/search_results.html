@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center mb-8">Search Results</h1>
+        <form class="mb-8" method="post">
+            {% csrf_token %}
+            <div class="flex justify-center items-center mb-4">
+                <input type="text" class="border border-gray-300 p-2 rounded-l-md focus:outline-none focus:border-blue-500" name="search" placeholder="Search by Title">
+                <select class="border border-gray-300 rounded-none p-2 focus:outline-none" name="category">
+                    <option value="">Select Category</option>
+                    <!-- Populate options dynamically from your categories -->
+                    {% for category in categories %}
+                        <option value="{{ category }}">{{ category }}</option>
+                    {% endfor %}
+                </select>
+                <select class="border border-gray-300 rounded-r-md p-2 focus:outline-none" name="price">
+                    <option value="">Select Price</option>
+                    <option value="cheap">Cheap</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="expensive">Expensive</option>
+                </select>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 ml-2 rounded-md hover:bg-blue-600 focus:outline-none" name="btnsea">Search</button>
+            </div>
+        </form>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for image in images %}
+                <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="{{ image.url.url }}" alt="{{ image.title }}" class="w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg">{{ image.title }}</h3>
+                        <p class="text-gray-600">{{ image.description }}</p>
+                        <!-- Add more details as needed -->
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">No images found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

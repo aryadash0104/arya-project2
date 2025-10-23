@@ -1,0 +1,737 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from demo.dashboardpack.com/finance-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Mar 2024 03:57:01 GMT -->
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Finance</title>
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link href="{% static 'profiles/assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <link rel="stylesheet" href="{% static 'profiles/assets/css/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'profiles/assets/css/style.css' %}">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />  
+
+    
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dash/css/bootstrap1.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/themefy_icon/themify-icons.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/swiper_slider/css/swiper.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/select2/css/select2.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/niceselect/css/nice-select.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/owl_carousel/css/owl.carousel.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/gijgo/gijgo.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/font_awesome/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'dash/vendors/tagsinput/tagsinput.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/datatable/css/jquery.dataTables.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'dash/vendors/datatable/css/responsive.dataTables.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'dash/vendors/datatable/css/buttons.dataTables.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/text_editor/summernote-bs4.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/morris/morris.css' %}">
+
+    <link rel="stylesheet" href="{% static 'dash/vendors/material_icon/material-icons.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'dash/css/metisMenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'dash/css/style1.css' %}" />
+    <link rel="stylesheet" href="{% static 'dash/css/colors/default.css' %}" id="colorSkinCSS">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
+</head>
+
+<body class="crm_body_bg">
+
+
+    <div id="sidebar" class="fixed top-0 left-0 z-40 max-md:top-auto max-md:bottom-0">
+
+        <div id="sidebar__inner" class="flex sside md:flex-col justify-between md:h-screen md:p-2 p-1 transition-all duration-500 bg-white shadow dark:bg-dark2 2xl:w-72 xl:w-60 max-xl:w-[73px] max-md:w-screen max-md:border-t max-md:dark:border-slate-700">
+
+            <!-- logo -->
+            <div class="flex h-20 px-2 max-md:fixed max-md:top-0 max-md:w-full max-md:bg-white/80 max-md:left-0 max-md:px-4 max-md:h-14 max-md:shadow-sm max-md:dark:bg-slate-900/80 backdrop-blur-xl">
+                <a href="/profiles/" id="logo" class="flex items-center gap-3">
+
+                    <!-- logo icon -->
+                    <img id="logo__icon" src="{% static 'profiles/assets/images/logo-icon.png' %}" alt="" class="md:w-8 hidden text-2xl max-xl:!block max-md:!hidden shrink-0 uk-animation-scale-up"> 
+
+                    <!-- text logo -->
+                    <img id="logo__text" src="{% static 'profiles/assets/images/logo.svg' %}" alt="" class="w-full h-6 ml-1 max-xl:hidden max-md:block dark:!hidden">
+                    <img id="logo__text" src="{% static 'profiles/assets/images/logo-dark.svg' %}" alt="" class="w-full h-6 ml-1 !hidden max-xl:!hidden max-md:block dark:max-md:!block dark:!block">
+                  
+                </a>
+            </div>
+
+            <!-- nav -->
+            <nav class="flex-1 max-md:flex max-md:justify-around md:space-y-2">
+
+                <!-- Home -->
+                <a href="/profiles/" class="active">
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                        <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="max-xl:hidden"> Home </span>
+                </a>
+            
+                <!-- Search -->
+                <a href="/profiles/search/">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                    <span class="max-xl:hidden"> Search </span>
+                </a>  
+                <div class="sm:w-[397px] w-full bg-white shadow-lg md:!left-[73px] hidden !left-0 dark:bg-dark2 dark:border1 max-md:bottom-[57px]"> 
+                    
+                </div> 
+
+                <!-- Explore -->
+                <a href="/profiles/explore/" class="max-md:!hidden">
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-compass" viewBox="0 0 16 16">
+                        <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                        <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
+                    </svg> 
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                        <path fill-rule="evenodd" d="M13.5 4.938a7 7 0 11-9.006 1.737c.202-.257.59-.218.793.039.278.352.594.672.943.954.332.269.786-.049.773-.476a5.977 5.977 0 01.572-2.759 6.026 6.026 0 012.486-2.665c.247-.14.55-.016.677.238A6.967 6.967 0 0013.5 4.938zM14 12a4 4 0 01-4 4c-1.913 0-3.52-1.398-3.91-3.182-.093-.429.44-.643.814-.413a4.043 4.043 0 001.601.564c.303.038.531-.24.51-.544a5.975 5.975 0 011.315-4.192.447.447 0 01.431-.16A4.001 4.001 0 0114 12z" clip-rule="evenodd" />
+                    </svg>
+                    <span  class="max-xl:hidden"> Explore </span>
+                </a>  
+
+                {% comment %} <a href="messages.html"  class="max-md:!fixed max-md:top-2 max-md:right-2">
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                        <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97zM6.75 8.25a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H7.5z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span  class="max-xl:hidden"> Messages </span>
+                </a> {% endcomment %}
+                
+                <!-- reels -->
+                <a href="/profiles/albums/"> <!-- Changed 'reels.html' to 'albums.html' -->
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <!-- SVG path for the album icon -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5.25v13.5a2.25 2.25 0 002.25 2.25h13.5a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25zm1.5 0V6a.75.75 0 01.75-.75h13.5a.75.75 0 01.75.75v12a.75.75 0 01-.75.75H4.5a.75.75 0 01-.75-.75V5.25zm1.5 3.75v7.5M8.25 8.25h7.5" />
+                    </svg>
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                        <!-- SVG path for the solid album icon -->
+                        <path fill-rule="evenodd" d="M3 5.25v13.5a2.25 2.25 0 002.25 2.25h13.5a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25zm1.5 0V6a.75.75 0 01.75-.75h13.5a.75.75 0 01.75.75v12a.75.75 0 01-.75.75H4.5a.75.75 0 01-.75-.75V5.25zm1.5 3.75v7.5M8.25 8.25h7.5" clip-rule="evenodd" />
+                    </svg>
+                    <span  class="max-xl:hidden"> albums </span> <!-- Changed 'reels' to 'albums' -->
+                </a>
+                
+                
+                <!-- Notification --> 
+                <a href="/profiles/myBuy/" class="max-md:!hidden">
+                    <ion-icon name="cart" style="font-size: 21px;"></ion-icon>
+                    <span class="max-xl:hidden"> My Orders </span>
+                </a>
+              
+                <a href="/profiles/mysale/" class="max-md:!hidden">
+                    <ion-icon name="cash" style="font-size: 21px;"></ion-icon>
+                    <span class="max-xl:hidden"> My Sales </span>
+                </a>
+
+                <a href="/profiles/auction/" class="max-md:!hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><path fill="currentColor" fill-rule="evenodd" d="M3.877 6.266a1.5 1.5 0 0 1 0-2.122L7.462.56a1.5 1.5 0 0 1 2.122 0l1.583 1.584a1.5 1.5 0 0 1 0 2.121L9.91 5.521L13.7 9.31a.75.75 0 1 1-1.062 1.06L8.85 6.583L7.582 7.85a1.5 1.5 0 0 1-2.12 0zM1.331 12.38h-.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-.5v-1.75a.5.5 0 0 0-.5-.5h-5.5a.5.5 0 0 0-.5.5z" clip-rule="evenodd"/></svg>
+                    <span class="max-xl:hidden"> Auction </span>
+                </a>
+                
+
+                <!-- marketplace -->
+                <a href="/profiles/shop/">
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                    </svg>
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                        <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clip-rule="evenodd" />
+                    </svg> 
+                    <span  class="max-xl:hidden"> Shop </span>
+                </a>
+
+                <!-- peaple -->
+                <a href="/profiles/wishlist/" class="max-md:!hidden">
+                    {% comment %} <ion-icon id="icon__outline" name="heart-outline"></ion-icon> {% endcomment %}
+                    {% comment %} <ion-icon id="icon__solid" name="heart"></ion-icon> {% endcomment %}
+                    <i class="fa-sharp fa-solid fa-heart" style="font-size: 21px;"></i>
+                    <span class="max-xl:hidden"> Wishlist </span>
+                </a>
+                
+                <!-- create a post -->
+                <!--
+                <a href="{% static '/image_form.html' %}">
+                    <button uk-toggle="target: #create-post" uk-toggle="" class="flex items-center gap-3 w-full">
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clip-rule="evenodd" />
+                    </svg>
+                    <span  class="max-xl:hidden"> Create </span></button>
+                </a>
+            -->
+            <a href="imageForm/"> <!-- Updated href value from %21.html to images_form.html -->
+                <button  uk-toggle="" class="flex items-center gap-3 w-full">
+                    <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clip-rule="evenodd" />
+                    </svg>
+                    <span  class="max-xl:hidden"> Create </span>
+                </button>
+            </a>
+            
+                <!-- components -->
+                <a href="/profiles/cart/" class="max-md:!hidden">
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 21px;"></i>
+                    <span  class="max-xl:hidden"> Cart </span>
+                </a>
+
+                <a href="/profiles/mylike/" class="max-md:!hidden">
+                    <ion-icon name="heart" style="font-size: 21px;"></ion-icon>
+                    <span class="max-xl:hidden"> My Likes </span>
+                </a>
+                
+
+            </nav>
+
+            <!-- profile -->
+            <div >
+                <a id="profile-link" class="flex items-center gap-3 p-3 group">
+                    <img src="{{ profile.profile_photo.url }}" alt="" class="rounded-full md:w-7 md:h-7 w-5 h-5 shrink-0">
+                    <span class="font-semibold text-sm max-xl:hidden">  {{ request.user.username }} </span>
+                    <ion-icon name="chevron-forward-outline"  class="text-xl ml-auto duration-200 group-aria-expanded:-rotate-90 max-xl:hidden"></ion-icon>
+                </a>
+                <div class="bg-white sm:w-64 2xl:w-[calc(100%-16px)] w-full shadow-lg border rounded-xl overflow-hidden max-md:!top-auto max-md:bottom-16 border2 dark:bg-dark2 hidden" uk-drop="animation:uk-animation-slide-bottom-medium ;animate-out: true">
+
+                    <div class="w-full h-1.5 bg-gradient-to-r to-purple-500 via-red-500 from-pink-500"></div>
+
+                    <div class="p-4 text-xs font-medium">
+                        <a href="profile.html">
+                            <img src="{{ profile.profile_photo.url }}" class="w-8 h-8 rounded-full" alt="">
+                            <div class="mt-2 space-y-0.5">
+                                <div class="text-base font-semibold"> {{ profile.user.username }} </div>
+                                <div class="text-gray-400 dark:text-white/80"> @{{ profile.user.username }} </div>
+                            </div>
+                        </a>
+                        <div class="mt-3 flex gap-3.5">
+                            <div> <a href="/profiles/profile/"> <strong> 620K </strong> <span class="text-gray-400 dark:text-white/80 ml-1">Following </span> </a> </div>
+                            <div> <a href="profile.html"> <strong> 38k </strong> <span class="text-gray-400 dark:text-white/80 ml-1">Followers </span> </a>  </div>
+                        </div>
+                            
+                    </div>
+                    <hr class="opacity-60">
+                    <ul class="text-sm font-semibold p-2">
+                        <li> <a href="setting.html" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="person-outline" class="text-lg"></ion-icon> Profile     </a></li>
+                        {% comment %} <li> <a href="upgrade.html" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="bookmark-outline" class="text-lg"></ion-icon> Upgrade </a></li>  {% endcomment %}
+                        <li> <a href="setting.html" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="settings-outline" class="text-lg"></ion-icon> Acount Setting  </a></li>
+                        <li> <a href="/logout/" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="log-out-outline" class="text-lg"></ion-icon> Log Out</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="main_content dashboard_part">
+
+        {% comment %} <div class="container-fluid g-0">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="serach_field-area">
+                            <div class="search_inner">
+                                <form action="#">
+                                    <div class="search_field">
+                                        <input type="text" placeholder="Search here...">
+                                    </div>
+                                    <button type="submit"> <img src="img/icon/icon_search.svg" alt> </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <div class="header_notification_warp d-flex align-items-center">
+                                <li>
+                                    <a href="#"> <img src="img/icon/bell.svg" alt> </a>
+                                </li>
+                                <li>
+                                    <a href="#"> <img src="img/icon/msg.svg" alt> </a>
+                                </li>
+                            </div>
+                            <div class="profile_info">
+                                <img src="img/client_img.png" alt="#">
+                                <div class="profile_info_iner">
+                                    <p>Welcome Admin!</p>
+                                    <h5>Travor James</h5>
+                                    <div class="profile_info_details">
+                                        <a href="#">My Profile <i class="ti-user"></i></a>
+                                        <a href="#">Settings <i class="ti-settings"></i></a>
+                                        <a href="#">Log Out <i class="ti-shift-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+
+        <div class="main_content_iner ">
+            <div class="container-fluid plr_30 body_white_bg pt_30">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="single_element">
+                            <div class="quick_activity">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="quick_activity_wrap">
+                                            <div class="single_quick_activity">
+                                                <h4>Total Income</h4>
+                                                <h3>$ <span class="counter">{{ total_income }}</span> </h3>
+                                                <p>Saved 25%</p>
+                                            </div>
+                                            <div class="single_quick_activity">
+                                                <h4>Total Today Income</h4>
+                                                <h3>$ <span class="counter">{{ total_today_income }}</span> </h3>
+                                                <p>Saved 25%</p>
+                                            </div>
+                                            <div class="single_quick_activity">
+                                                <h4>Total Monthly Income</h4>
+                                                <h3>$ <span class="counter">{{ total_monthly_income }}</span> </h3>
+                                                <p>Saved 25%</p>
+                                            </div>
+                                            <div class="single_quick_activity">
+                                                <h4>Total Views</h4>
+                                                <h3><span class="counter">{{ total_views }}</span> </h3>
+                                                <p>Saved 65%</p>
+                                            </div>
+                                            <div class="single_quick_activity">
+                                                <h4>Total Likes</h4>
+                                                <h3> <span class="counter">{{ total_likes }}</span> </h3>
+                                                <p>Saved 25%</p>
+                                            </div>
+                                            <div class="single_quick_activity">
+                                                <h4>Total Comments</h4>
+                                                <h3> <span class="counter">{{ total_comments }}</span> </h3>
+                                                <p>Saved 25%</p>
+                                            </div>
+                                            <div class="single_quick_activity">
+                                                <h4>Total Interaction</h4>
+                                                <h3> <span class="counter">{{ total_interaction }}</span> </h3>
+                                                <p>Saved 25%</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="col-lg-12 col-xl-6">
+                        <div class="white_box mb_30 min_430">
+                            <div class="box_header  box_header_block ">
+                                <div class="main-title">
+                                    <h3 class="mb-0">AP and AR Balance</h3>
+                                    <span>Avg. $5,309</span>
+                                </div>
+                                <div class="box_select d-flex">
+                                    <select class="nice_Select2 mr_5">
+                                        <option value="1">Monthly</option>
+                                        <option value="1">Monthly</option>
+                                    </select>
+                                    <select class="nice_Select2 ">
+                                        <option value="1">Last Year</option>
+                                        <option value="1">this Year</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="bar_active"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3 ">
+                        <div class="white_box mb_30 min_430">
+                            <div class="box_header  box_header_block">
+                                <div class="main-title">
+                                    <h3 class="mb-0">% of Income Budget</h3>
+                                </div>
+                            </div>
+                            <div id="radial_2"></div>
+                            <div class="radial_footer">
+                                <div class="radial_footer_inner d-flex justify-content-between">
+                                    <div class="left_footer">
+                                        <h5> <span style="background-color: #EDECFE;"></span> Blance</h5>
+                                        <p>-$18,570</p>
+                                    </div>
+                                    <div class="left_footer">
+                                        <h5> <span style="background-color: #A4A1FB;"></span> Blance</h5>
+                                        <p>$31,430</p>
+                                    </div>
+                                </div>
+                                <div class="radial_bottom">
+                                    <p><a href="#">View Full Report</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="white_box min_430">
+                            <div class="box_header  box_header_block">
+                                <div class="main-title">
+                                    <h3 class="mb-0">% of Expenses Budget</h3>
+                                </div>
+                            </div>
+                            <div id="radial_1"></div>
+                            <div class="radial_footer">
+                                <div class="radial_footer_inner d-flex justify-content-between">
+                                    <div class="left_footer">
+                                        <h5> <span style="background-color: #EDECFE;"></span> Blance</h5>
+                                        <p>-$18,570</p>
+                                    </div>
+                                    <div class="left_footer">
+                                        <h5> <span style="background-color: #A4A1FB;"></span> Blance</h5>
+                                        <p>$31,430</p>
+                                    </div>
+                                </div>
+                                <div class="radial_bottom">
+                                    <p><a href="#">View Full Report</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div> {% endcomment %}
+                    <div class="col-lg-12 col-xl-6">
+                        <div class="white_box mb_30 min_430">
+                            <div class="box_header  box_header_block">
+                                <div class="main-title">
+                                    <h3 class="mb-0">Chart of the sales Day wise</h3>
+                                </div>
+                            </div>
+                            <canvas id="sales-chart" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xl-6">
+                        <div class="white_box mb_30 min_430">
+                            <div class="box_header box_header_block align-items-">
+                                <div class="main-title">
+                                    <h3 class="mb-0">Cost of goods / Services</h3>
+                                </div>
+                                <div class="title_info">
+                                    <p>1 Jan 2020 to 31 Dec 2020 <br>
+                                    <div class="legend_style text-end">
+                                        <li> <span style="background-color: #A4A1FB;"></span> Services</li>
+                                        <li class="inactive"> <span style="background-color: #A4A1FB;"></span> Average
+                                        </li>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                            <canvas height="200" id="visit-sale-chart2"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <h2>Total Unique Buyers</h2>
+                        <table id="total-buyers-table" class="display">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Total Earnings</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table body will be populated dynamically -->
+                            </tbody>
+                        </table>
+                
+                        <h2>Per-Image Unique Buyers</h2>
+                        {% comment %} {% for item in per_image_unique_buyers %} {% endcomment %}
+                            <h3>{{ item.title }}</h3>
+                                <table class="display">
+                                <thead>
+                                    <tr>
+                                        <th>User ID</th>
+                                        <th>Total Earnings</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Table body will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        {% comment %} {% endfor %} {% endcomment %}
+                    </div>
+
+                    {% comment %} <div class="col-lg-6 col-xl-3">
+                        <div class="white_box mb_30 min_400">
+                            <div class="box_header ">
+                                <div class="main-title">
+                                    <h3 class="mb-0">Disputed vs Overdue Invoices</h3>
+                                </div>
+                            </div>
+                            <canvas height="220px" id="doughutChart"></canvas>
+                            <div class="legend_style mt_10px ">
+                                <li class="d-block"> <span style="background-color: #DF67C1;"></span> Disputed Invoices
+                                </li>
+                                <li class="d-block"> <span style="background-color: #6AE0BD;"></span> Avarage</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-6">
+                        <div class="white_box mb_30 min_400 ">
+                            <div class="box_header  box_header_block">
+                                <div class="main-title">
+                                    <h3 class="mb-0">Disputed Invoices</h3>
+                                </div>
+                                <div class="legend_style mt-10">
+                                    <li> <span></span> Disputed Invoices</li>
+                                    <li class="inactive"> <span></span> Avarage</li>
+                                </div>
+                            </div>
+                            <div class="title_btn">
+                                <ul>
+                                    <li><a class="active" href="#">All time</a></li>
+                                    <li><a href="#">This year</a></li>
+                                    <li><a href="#">This week</a></li>
+                                    <li><a href="#">Today</a></li>
+                                </ul>
+                            </div>
+                            <canvas height="120px" id="sales-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="white_box mb_30 min_400">
+                            <div class="box_header  box_header_block">
+                                <div class="main-title">
+                                    <h3 class="mb-0">Disputed vs Overdue Invoices</h3>
+                                </div>
+                            </div>
+                            <canvas height="220px" id="doughutChart2"></canvas>
+                            <div class="legend_style legend_style_grid mt_10px">
+                                <li class="d-block"> <span style="background-color: #FF7B36;"></span> 30 Days</li>
+                                <li class="d-block"> <span style="background-color: #E8205E;"></span> 60 Days</li>
+                                <li class="d-block"> <span style="background-color: #3B76EF"></span> 90 Days</li>
+                                <li class="d-block"> <span style="background-color:#00BFBF;"></span> 90+Days</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="white_box min_400">
+                            <div class="box_header  box_header_block">
+                                <div class="main-title">
+                                    <h3 class="mb-0">EBIT (Earnings Before Interest & Tax)</h3>
+                                </div>
+                                <div class="title_info">
+                                    <p>1 Jan 2020 to 31 Dec 2020</p>
+                                </div>
+                            </div>
+                            <div id="area_active"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="white_box mb_30 min_400">
+                            <div class="box_header ">
+                                <div class="main-title">
+                                    <h3 class="mb-0">Inventory Turnover</h3>
+                                </div>
+                            </div>
+                            <div id="stackbar_active"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_part">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="footer_iner text-center">
+                            <p>2020 © Influence - Designed by<a href="#"> Dashboard</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> {% endcomment %}
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('sales-chart').getContext('2d');
+        var dates = [];
+        var sales = [];
+        {% for sale in day_wise_sales %}
+            dates.push('{{ sale.date|date:"Y-m-d" }}');
+            sales.push('{{ sale.total_sales }}');
+        {% endfor %}
+    
+        var myChart = new Chart(ctx, {
+            type: 'bar', // Use 'bar' type for a bar chart
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: 'Total Sales',
+                    data: sales,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Change color as needed
+                    borderColor: 'rgba(54, 162, 235, 1)', // Change color as needed
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctx2 = document.getElementById('visit-sale-chart2').getContext('2d');
+        var items = {{ items|safe }};
+        var labels = [];
+        var sales = [];
+        
+        // Extract labels (image titles) and sales data from items
+        items.forEach(function(item) {
+            labels.push(item.title);
+            sales.push(item.total_sales);
+        });
+        
+        var myChart = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Sales',
+                    data: sales,
+                    backgroundColor: 'rgba(164, 161, 251, 0.5)',
+                    borderColor: 'rgba(164, 161, 251, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                var label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+       
+        
+    </script>
+    
+    {% comment %} <script>
+        console.log("Per image unique buyers data:", {{ per_image_unique_buyers_json|safe }});
+
+        $(document).ready(function() {
+            // Initialize DataTable for total unique buyers
+            console.log("Per image unique buyers data:", {{ per_image_unique_buyers_json|safe }});
+
+            $('#total-buyers-table').DataTable();
+            
+            // Parse JSON data for total unique buyers
+            var totalBuyersData = JSON.parse('{{ unique_buyers_json|escapejs }}');
+            totalBuyersData.forEach(function(item) {
+                $('#total-buyers-table tbody').append('<tr><td>' + item[0] + '</td><td>' + item[1] + '</td></tr>');
+            });
+        
+            // Initialize DataTable for per-image unique buyers
+            {% for item in per_image_unique_buyers %}
+                var perImageTable = $('#{{ item.title|slugify }}-table').DataTable({
+                    data: {{ item.data|safe }},
+                    columns: [
+                        { title: 'User ID' },
+                        { title: 'Total Earnings' }
+                    ]
+                });
+            {% endfor %}
+        });
+         
+
+    </script> {% endcomment %}
+
+    <script src="{% static 'dash/js/jquery1-3.4.1.min.js' %}"></script>
+
+    <script src="{% static 'dash/js/popper1.min.js' %}"></script>
+
+    <script src="{% static 'dash/js/bootstrap1.min.js' %}"></script>
+
+    <script src="{% static 'dash/js/metisMenu.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/count_up/jquery.waypoints.min.js' %}"></script>
+
+
+    <script src="{% static 'dash/vendors/count_up/jquery.counterup.min.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/swiper_slider/js/swiper.min.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/niceselect/js/jquery.nice-select.min.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/owl_carousel/js/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/gijgo/gijgo.min.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/datatable/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/jszip.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/pdfmake.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/vfs_fonts.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'dash/vendors/datatable/js/buttons.print.min.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/progressbar/jquery.barfiller.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/tagsinput/tagsinput.js' %}"></script>
+
+    <script src="{% static 'dash/vendors/text_editor/summernote-bs4.js' %}"></script>
+
+    <script src="{% static 'dash/js/custom.js' %}"></script>
+
+    <script src="{% static 'profiles/assets/js/uikit.min.js' %}"></script>
+    <script src="{% static 'profiles/assets/js/script.js' %}"></script>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+->  Search Page 
+        - title (done)
+        - username (done)
+        - filters ma category and price (done)
+        - subcategory filter (optional)
+        
+-> Albums 
+        - create albums  (One image can be added to only one album)
+        - display albums (done)
+        - see a particular albums (done)
+
+-> Auction page 
+        - current auction list 
+        - if click on the images (data should be shown)
+
+-> Follow 
+        - follow following button
+        - show the posts of the user with the follow list only
+        - profile page edit 
+        - home page edit 
+
+-> premium images Display 
+        - edit the idex page according to this (sidebar only)
+
+-> biding
+        - bid on a image 

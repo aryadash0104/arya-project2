@@ -1,0 +1,327 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <style type="text/css">
+      .site-link{
+        padding: 5px 15px;
+        position: fixed;
+        z-index: 99999;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        right: 30px;
+        bottom: 30px;
+        border-radius: 10px;
+      }
+      .site-link img{
+        width: 30px;
+        height: 30px;
+      }
+      .body {
+        background: #fedcd7; /* Default background color */
+        transition: all .5s;
+        padding: 1px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .veen {
+        width: 70%;
+        margin: 100px auto;
+        background: rgba(255, 255, 255, 0.8); /* Lighter shade */
+        min-height: 400px;
+        display: table;
+        position: relative;
+        box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+      }
+
+      .veen > div {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        color: #fff;
+      }
+      .veen button{
+        background: transparent;
+        background-image: linear-gradient(90deg, #d9c682, #ff4931); /* Lighter shade of orange */
+        display: inline-block;
+        padding: 10px 30px;
+        border: 3px solid #fff;
+        border-radius: 50px;
+        background-clip: padding-box;
+        position: relative;
+        color: #FFF;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        transition: all .25s;
+      }
+      .veen button.dark {
+        border-color: #fa5e4d; /* Lighter shade */
+        background: #fa5e4d;
+      }
+      .veen .move button.dark {
+        border-color: #e0b722; /* Lighter shade */
+        background: #e0b722;
+      }
+
+      .veen .splits p{
+        color: #c7230d;
+        font-size: 18px;
+      }
+      .veen button:active {
+        box-shadow: none;
+      }
+      .veen button:focus {
+        outline: none;
+      }
+      .veen > .wrapper {
+        position: absolute;
+        width: 40%;
+        height: 130%;
+        top: -15%;
+        left: 30%;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        transition: all .5s;
+        color: #303030;
+        overflow: hidden;
+      }
+      .veen .wrapper > form{
+        align-self: center;
+        padding: 15px 30px 30px;
+        width: 100%;
+        transition: all .5s;
+        background: #fff;
+        width: 100%; 
+      }
+      .veen .wrapper > form:focus{
+        outline: none;
+      }
+      .veen .wrapper #login{
+        padding-top: 25%;
+        visibility: visible;
+      }
+      .veen .wrapper #register{
+        transform: translateY(-140%) translateX(100%);
+        visibility: hidden;
+      }
+      .veen .wrapper.move #register{
+        transform: translateY(-140%) translateX(0%);
+        padding-top: 25%;
+        visibility: visible;
+      }
+      .veen .wrapper #login{
+        transform: translateY(-15%) translateX(0%);
+        visibility: visible;
+      }
+      .veen .wrapper.move #login{
+        transform: translateX(-100%);
+        visibility: hidden;
+      }
+      .veen .wrapper > form > div {
+        position: relative;
+        margin-bottom: 15px;
+      }
+      .veen .wrapper label{
+        position: absolute;
+        top: -7px;
+        font-size: 12px;
+        white-space: nowrap;
+        background: #fff;
+        text-align: left;
+        left: 15px;
+        padding: 0 5px;
+        color: #999;
+        pointer-events: none;
+      }
+      .veen .wrapper h3{
+        margin-bottom: 25px;
+      }
+      .veen .wrapper input, .veen .wrapper select{
+        height: 40px;
+        padding: 5px 15px;
+        width: 100%;
+        border: solid 1px #999;
+      }
+      .veen .wrapper input:focus, .veen .wrapper select:focus{
+        outline: none;
+        border-color: #ff4931; /* Lighter shade of orange */
+      }
+      .veen > .wrapper.move{
+        left: 45%;
+      }
+      .veen > .wrapper.move input:focus, .veen > .wrapper.move select:focus{
+        border-color: #d9c682; /* Lighter shade of yellow */
+      }
+      @media (max-width: 767px){
+        .veen.move {
+          background: rgba(255, 255, 255, 0.6); /* Even lighter shade */
+        }
+        .veen{
+          padding: 5px;
+          margin: 0;
+          width: 100%;
+          display: block;
+        }
+        .veen > .wrapper{
+          position: relative;
+          height: auto;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+        .veen > div{
+          display: inline-block;
+        }
+        .splits{
+          width: 50%;
+          background: #fff;
+          float: left;
+        }
+        .splits button{
+          width: 100%;
+          border-radius: 0;
+          background: #505050; 
+          border: 0;
+          opacity: .7;
+        }
+        .splits button.active{
+          opacity: 1;
+        }
+        .splits button.active{
+          opacity: 1;
+          background: #f7c8c2; /* Lighter shade of orange */
+        }
+        .veen .rgstr-btn button.active {
+          background: #fbf4dc;
+        }
+        .veen .login-btn button.active {
+          background: #f7c8c2;
+        }
+        .splits p{
+          display: none;
+        }
+        .veen > .wrapper.move{
+          left: 0%;
+        }
+      }
+
+      input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+        box-shadow: inset 0 0 0 50px #fff
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="body">
+      <div class="veen">
+        <!-- 
+        <div class="login-btn splits">
+          <p>Sell Image</p>
+          <button class="active">Sell Image</button>
+        </div>
+      
+         <div class="rgstr-btn splits">
+          <p>Create Auction For Image</p>
+          <button>Create</button>
+        </div>
+        -->
+        <div class="wrapper">
+          <form id="login" action="/profiles/imagesUpd/" tabindex="500" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3>Sell Your Image</h3>
+            <div class="title">
+              <input type="text" name="txtTitle1" required />
+              <label>Image Title</label>
+            </div>
+            <div class="ImgUrl">
+              <input type="file" name="fupImage1" required />
+              <label>Image Url</label>
+            </div>
+            <div class="Desc">
+              <input type="textarea" name="txtDescription1" required />
+              <label>Description</label>
+            </div>
+            <div class="">
+              <select name="CateOp" id="">
+                {{ Category|length }}
+                {% for c in Category %}
+                  <option value="{{ c.categoryid }}">{{ c.categoryname }}</option>
+                {% endfor %}
+              </select>
+              <label>Select Category</label>
+            </div>
+            <div class="">
+              <select name="SubCateOp" id="">
+                {% for sc in SubCategory %}
+                  <option value="{{ sc.subcategoryid }}">{{ sc.subcategoryname }}</option>
+                {% endfor %}
+              </select>
+              <label>Select Subcategory</label>
+            </div>
+            <div class="Price">
+              <input type="number" value="0" name="txtPrice1" required />
+              <label>Price</label>
+            </div>
+            <div class="Discount">
+              <input type="number" name="txtDisc1" min="0" value="0" max="100" required />
+              <label>Discount</label>
+            </div>
+            <div class="submit">
+              <button class="dark" name="btnImgSell">Sell</button>
+            </div>
+          </form>
+        <!--
+          <form id="register" tabindex="502" method="post" enctype="multipart/form-data">
+            <h3>Create Auction</h3>
+            <div class="title">
+              <input type="text" name="txtTitle2" required />
+              <label>Title</label>
+            </div>
+            <div class="ImgUrl">
+              <input type="file" name="fupImg2" required />
+              <label>Image Url</label>
+            </div>
+            <div class="Description">
+              <input type="text" name="txtDescription2" required />
+              <label>Description</label>
+            </div>
+            <div class="Base Amount">
+              <input type="number" name="txtBPrice" required />
+              <label>Base Amount</label>
+            </div>
+            {% comment %} <div class="startDate">
+              <input type="date" name="sDate" />
+              <label>Start Date</label>
+            </div> {% endcomment %}
+            <div class="submit">
+              <button class="dark" name="btnImgAuction">Create Auction</button>
+            </div>
+          </form>
+        -->
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  <script>
+    $(document).ready(function(){
+      $(".veen .rgstr-btn button").click(function(){
+        $('.veen .wrapper').addClass('move');
+        $('.body').css('background','#fbf4dc'); /* Lighter shade */
+        $(".veen .login-btn button").removeClass('active');
+        $(this).addClass('active');
+      });
+      $(".veen .login-btn button").click(function(){
+        $('.veen .wrapper').removeClass('move');
+        $('.body').css('background','#fedcd7'); /* Lighter shade */
+        $(".veen .rgstr-btn button").removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+  </script>
+  </body>
+</html>

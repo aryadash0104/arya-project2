@@ -1,0 +1,95 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="post">
+      {% csrf_token %}
+      <input type="text" name="Title" placeholder="Album Title" /><br />
+
+      <h3>Select Images:</h3>
+      {% for image in images %}
+        <input type="checkbox" name="images" value="{{ image.imageid }}" />{{ image.title }}<br />
+      {% endfor %}
+
+      <button type="submit">Create Album</button>
+    </form>
+  </body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Album</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    h2{
+      margin-top: 50px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .form-check {
+      margin-bottom: 10px;
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Create Album</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control" name="Title" placeholder="Album Title">
+    </div>
+
+    <h3>Select Images:</h3>
+    {% for image in images %}
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="images" value="{{ image.imageid }}">
+        <label class="form-check-label">{{ image.title }}</label>
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Create Album</button>
+  </form>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

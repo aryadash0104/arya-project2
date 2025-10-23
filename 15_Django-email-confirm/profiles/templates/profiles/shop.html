@@ -1,0 +1,950 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link href="{% static 'profiles/assets/images/favicon.png' %}" rel="icon" type="image/png">
+
+    <!-- title and description-->
+    <title>Instello</title>
+    <meta name="description" content="Instello - Sharing Photos platform HTML Template">
+   
+    <!-- css files -->
+    <link rel="stylesheet" href="{% static 'profiles/assets/css/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'profiles/assets/css/style.css' %}">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />  
+    
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+
+
+    <div id="wrapper">
+
+        <!-- sidebar -->
+        <div id="sidebar" class="fixed top-0 left-0 z-40 max-md:top-auto max-md:bottom-0">
+
+            <div id="sidebar__inner" class="flex sside md:flex-col justify-between md:h-screen md:p-2 p-1 transition-all duration-500 bg-white shadow dark:bg-dark2 2xl:w-72 xl:w-60 max-xl:w-[73px] max-md:w-screen max-md:border-t max-md:dark:border-slate-700">
+
+                <!-- logo -->
+                <div class="flex h-20 px-2 max-md:fixed max-md:top-0 max-md:w-full max-md:bg-white/80 max-md:left-0 max-md:px-4 max-md:h-14 max-md:shadow-sm max-md:dark:bg-slate-900/80 backdrop-blur-xl">
+                    <a href="/profiles/" id="logo" class="flex items-center gap-3">
+
+                        <!-- logo icon -->
+                        <img id="logo__icon" src="{% static 'profiles/assets/images/logo-icon.png' %}" alt="" class="md:w-8 hidden text-2xl max-xl:!block max-md:!hidden shrink-0 uk-animation-scale-up"> 
+
+                        <!-- text logo -->
+                        <img id="logo__text" src="{% static 'profiles/assets/images/logo.svg' %}" alt="" class="w-full h-6 ml-1 max-xl:hidden max-md:block dark:!hidden">
+                        <img id="logo__text" src="{% static 'profiles/assets/images/logo-dark.svg' %}" alt="" class="w-full h-6 ml-1 !hidden max-xl:!hidden max-md:block dark:max-md:!block dark:!block">
+                      
+                    </a>
+                </div>
+
+                <!-- nav -->
+                <nav class="flex-1 max-md:flex max-md:justify-around md:space-y-2">
+
+                    <!-- Home -->
+                    <a href="/profiles/" class="active">
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                            <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="max-xl:hidden"> Home </span>
+                    </a>
+                
+                    <!-- Search -->
+                    <a href="/profiles/search/">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                        <span class="max-xl:hidden"> Search </span>
+                    </a>  
+                    <div class="sm:w-[397px] w-full bg-white shadow-lg md:!left-[73px] hidden !left-0 dark:bg-dark2 dark:border1 max-md:bottom-[57px]"> 
+                        
+                    </div> 
+
+                    <!-- Explore -->
+                    <a href="/profiles/explore/" class="max-md:!hidden">
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-compass" viewBox="0 0 16 16">
+                            <path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                            <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
+                        </svg> 
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                            <path fill-rule="evenodd" d="M13.5 4.938a7 7 0 11-9.006 1.737c.202-.257.59-.218.793.039.278.352.594.672.943.954.332.269.786-.049.773-.476a5.977 5.977 0 01.572-2.759 6.026 6.026 0 012.486-2.665c.247-.14.55-.016.677.238A6.967 6.967 0 0013.5 4.938zM14 12a4 4 0 01-4 4c-1.913 0-3.52-1.398-3.91-3.182-.093-.429.44-.643.814-.413a4.043 4.043 0 001.601.564c.303.038.531-.24.51-.544a5.975 5.975 0 011.315-4.192.447.447 0 01.431-.16A4.001 4.001 0 0114 12z" clip-rule="evenodd" />
+                        </svg>
+                        <span  class="max-xl:hidden"> Explore </span>
+                    </a>  
+
+                    {% comment %} <a href="messages.html"  class="max-md:!fixed max-md:top-2 max-md:right-2">
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                        </svg>
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                            <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97zM6.75 8.25a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H7.5z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span  class="max-xl:hidden"> Messages </span>
+                    </a> {% endcomment %}
+                    
+                    <!-- reels -->
+                    <a href="/profiles/albums/"> <!-- Changed 'reels.html' to 'albums.html' -->
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <!-- SVG path for the album icon -->
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5.25v13.5a2.25 2.25 0 002.25 2.25h13.5a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25zm1.5 0V6a.75.75 0 01.75-.75h13.5a.75.75 0 01.75.75v12a.75.75 0 01-.75.75H4.5a.75.75 0 01-.75-.75V5.25zm1.5 3.75v7.5M8.25 8.25h7.5" />
+                        </svg>
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                            <!-- SVG path for the solid album icon -->
+                            <path fill-rule="evenodd" d="M3 5.25v13.5a2.25 2.25 0 002.25 2.25h13.5a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25zm1.5 0V6a.75.75 0 01.75-.75h13.5a.75.75 0 01.75.75v12a.75.75 0 01-.75.75H4.5a.75.75 0 01-.75-.75V5.25zm1.5 3.75v7.5M8.25 8.25h7.5" clip-rule="evenodd" />
+                        </svg>
+                        <span  class="max-xl:hidden"> albums </span> <!-- Changed 'reels' to 'albums' -->
+                    </a>
+                    
+                    
+                    <!-- Notification --> 
+                    <a href="/profiles/myBuy/" class="max-md:!hidden">
+                        <ion-icon name="cart" style="font-size: 21px;"></ion-icon>
+                        <span class="max-xl:hidden"> My Orders </span>
+                    </a>
+                  
+                    <a href="/profiles/mysale/" class="max-md:!hidden">
+                        <ion-icon name="cash" style="font-size: 21px;"></ion-icon>
+                        <span class="max-xl:hidden"> My Sales </span>
+                    </a>
+
+                    <a href="/profiles/auction/" class="max-md:!hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 14 14"><path fill="currentColor" fill-rule="evenodd" d="M3.877 6.266a1.5 1.5 0 0 1 0-2.122L7.462.56a1.5 1.5 0 0 1 2.122 0l1.583 1.584a1.5 1.5 0 0 1 0 2.121L9.91 5.521L13.7 9.31a.75.75 0 1 1-1.062 1.06L8.85 6.583L7.582 7.85a1.5 1.5 0 0 1-2.12 0zM1.331 12.38h-.5a.75.75 0 0 0 0 1.5h7.5a.75.75 0 0 0 0-1.5h-.5v-1.75a.5.5 0 0 0-.5-.5h-5.5a.5.5 0 0 0-.5.5z" clip-rule="evenodd"/></svg>
+                        <span class="max-xl:hidden"> Auction </span>
+                    </a>
+                    
+
+                    <!-- marketplace -->
+                    <a href="/profiles/shop/">
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden">
+                            <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clip-rule="evenodd" />
+                        </svg> 
+                        <span  class="max-xl:hidden"> Shop </span>
+                    </a>
+
+                    <!-- peaple -->
+                    <a href="/profiles/wishlist/" class="max-md:!hidden">
+                        {% comment %} <ion-icon id="icon__outline" name="heart-outline"></ion-icon> {% endcomment %}
+                        {% comment %} <ion-icon id="icon__solid" name="heart"></ion-icon> {% endcomment %}
+                        <i class="fa-sharp fa-solid fa-heart" style="font-size: 21px;"></i>
+                        <span class="max-xl:hidden"> Wishlist </span>
+                    </a>
+                    
+                    <!-- create a post -->
+                    <!--
+                    <a href="{% static '/image_form.html' %}">
+                        <button uk-toggle="target: #create-post" uk-toggle="" class="flex items-center gap-3 w-full">
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clip-rule="evenodd" />
+                        </svg>
+                        <span  class="max-xl:hidden"> Create </span></button>
+                    </a>
+                -->
+                <a href="imageForm/"> <!-- Updated href value from %21.html to images_form.html -->
+                    <button  uk-toggle="" class="flex items-center gap-3 w-full">
+                        <svg id="icon__outline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <svg id="icon__solid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.25a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z" clip-rule="evenodd" />
+                        </svg>
+                        <span  class="max-xl:hidden"> Create </span>
+                    </button>
+                </a>
+                
+                    <!-- components -->
+                    <a href="/profiles/cart/" class="max-md:!hidden">
+                        <i class="fa-solid fa-cart-shopping" style="font-size: 21px;"></i>
+                        <span  class="max-xl:hidden"> Cart </span>
+                    </a>
+
+                    <a href="/profiles/mylike/" class="max-md:!hidden">
+                        <ion-icon name="heart" style="font-size: 21px;"></ion-icon>
+                        <span class="max-xl:hidden"> My Likes </span>
+                    </a>
+                    
+ 
+                </nav>
+
+                <!-- profile -->
+                <div >
+                    <a id="profile-link" class="flex items-center gap-3 p-3 group">
+                        <img src="{{ profile.profile_photo.url }}" alt="" class="rounded-full md:w-7 md:h-7 w-5 h-5 shrink-0">
+                        <span class="font-semibold text-sm max-xl:hidden">  {{ request.user.username }} </span>
+                        <ion-icon name="chevron-forward-outline"  class="text-xl ml-auto duration-200 group-aria-expanded:-rotate-90 max-xl:hidden"></ion-icon>
+                    </a>
+                    <div class="bg-white sm:w-64 2xl:w-[calc(100%-16px)] w-full shadow-lg border rounded-xl overflow-hidden max-md:!top-auto max-md:bottom-16 border2 dark:bg-dark2 hidden" uk-drop="animation:uk-animation-slide-bottom-medium ;animate-out: true">
+
+                        <div class="w-full h-1.5 bg-gradient-to-r to-purple-500 via-red-500 from-pink-500"></div>
+ 
+                        <div class="p-4 text-xs font-medium">
+                            <a href="profile.html">
+                                <img src="{{ profile.profile_photo.url }}" class="w-8 h-8 rounded-full" alt="">
+                                <div class="mt-2 space-y-0.5">
+                                    <div class="text-base font-semibold"> {{ profile.user.username }} </div>
+                                    <div class="text-gray-400 dark:text-white/80"> @{{ profile.user.username }} </div>
+                                </div>
+                            </a>
+                            <div class="mt-3 flex gap-3.5">
+                                <div> <a href="/profiles/profile/"> <strong> 620K </strong> <span class="text-gray-400 dark:text-white/80 ml-1">Following </span> </a> </div>
+                                <div> <a href="profile.html"> <strong> 38k </strong> <span class="text-gray-400 dark:text-white/80 ml-1">Followers </span> </a>  </div>
+                            </div>
+                                
+                        </div>
+                        <hr class="opacity-60">
+                        <ul class="text-sm font-semibold p-2">
+                            <li> <a href="setting.html" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="person-outline" class="text-lg"></ion-icon> Profile     </a></li>
+                            {% comment %} <li> <a href="upgrade.html" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="bookmark-outline" class="text-lg"></ion-icon> Upgrade </a></li>  {% endcomment %}
+                            <li> <a href="setting.html" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="settings-outline" class="text-lg"></ion-icon> Acount Setting  </a></li>
+                            <li> <a href="/logout/" class="flex gap-3 rounded-md p-2 hover:bg-secondery"> <ion-icon name="log-out-outline" class="text-lg"></ion-icon> Log Out</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- main contents -->
+        <main class="2xl:ml-[--w-side] xl:ml-[--w-side-md] md:ml-[--w-side-small]">
+
+            <div class="main__inner">
+                
+                <div uk-sticky="cls-active: bg-slate-100/60 z-30 backdrop-blur-lg px-4; start: 80; animation: uk-animation-slide-top">
+                
+                    <!-- heading title -->
+                    <div class="page__heading">
+                        <h1> Market </h1>
+                    </div>
+
+                    
+                
+
+                    <!-- tab style two .  default this tab is hidden just remove to see style tab 2 -->
+                    <div class="relative flex items-center justify-between mt-6 border-b hidden">
+
+                        <!-- tabs -->
+                        <ul  class="flex gap-2 text-sm text-center text-gray-600 capitalize font-semibold"  
+                             uk-switcher="connect: #market_tab ; animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium">
+                            
+                            <li> <a href="#" class="flex items-center px-3 py-3.5 -mb-px border-b-2 border-transparent aria-expanded:text-black aria-expanded:border-black"> <ion-icon class="mr-2 text-2xl" name="cart-outline"></ion-icon> My Products</a> </li>
+                            {% comment %} <li> <a href="#" class="flex items-center px-3 py-3.5 -mb-px border-b-2 border-transparent aria-expanded:text-black aria-expanded:border-black"> <ion-icon class="mr-2 text-2xl" name="cloud-download-outline"></ion-icon> Donwloads</a> </li>
+                            <li> <a href="#" class="flex items-center px-3 py-3.5 -mb-px border-b-2 border-transparent aria-expanded:text-black aria-expanded:border-black"> <ion-icon class="mr-2 text-2xl" name="add-outline"></ion-icon> Upload</a> </li> {% endcomment %}
+                        
+                        </ul> 
+ 
+                        <!-- right button icons -->
+                        {% comment %} <div class="flex items-center gap-4"> 
+                            <button class="flex" uk-toggle="target: #search-box; cls: hidden">
+                                <ion-icon class="text-xl" name="search"></ion-icon> 
+                            </button> 
+                            <select class="!bg-transparent focus:!border-transparent focus:!ring-transparent md:w-40">
+                                <option value="1">Latest</option> 
+                                <option value="3">best product</option>
+                                <option value="4">Engaged</option>
+                            </select>
+                        </div>
+                         
+                        <!-- Search box -->
+                        <div class="absolute left-0 -bottom-0.5 w-full hidden ring-4 ring-slate-100 rounded-lg z-30 " id="search-box">
+                            <div class="bg-slate-200 py-2 px-3.5 rounded-md w-full flex items-center gap-3"> 
+                                <button type="submit" class="flex"> <ion-icon class="text-2xl" name="search"></ion-icon></button> 
+                                <input type="text" class="!bg-transparent !outline-none !w-full" placeholder="Search">
+                                <button class="flex" uk-toggle="target: #search-box; cls: hidden">
+                                    <ion-icon class="text-2xl" name="close"></ion-icon> 
+                                </button>
+                            </div>  
+                        </div> {% endcomment %}
+
+                    </div> 
+
+                </div>
+
+                <div class="uk-switcher" id="market_tab">
+
+                    <!-- product list -->
+                    <div>
+
+                        <!-- category list -->
+                        <div class="relative" tabindex="-1" uk-slider="finite: true">
+
+                            <div class="py-6 overflow-hidden uk-slider-container">
+                 
+                                {% comment %} <ul class="uk-slider-items w-[calc(100%+0.10px)] capitalize text-sm font-semibold">
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Gamings </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> headphones </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Parfums </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Fruits </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Gaming </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Mobiles </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Laptops </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Gaming </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> headphones </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Parfums </a> </li>
+                                    <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-slate-200 inline-block hover:shadow dark:bg-dark2"> Fruits </a> </li>
+                                </ul> {% endcomment %}
+                            
+                            </div>
+                                    
+                            {% comment %} <a class="absolute left-0 -translate-y-1/2 top-1/2 flex items-center w-16 h-12 p-2.5 justify-start bg-gradient-to-r from-bgbody via-bgbody" href="#" uk-slider-item="previous"> <ion-icon name="chevron-back" class="text-2xl"></ion-icon> </a>
+                            <a class="absolute right-0 -translate-y-1/2 top-1/2 flex items-center w-16 h-12 p-2.5 justify-end bg-gradient-to-l from-bgbody via-bgbody" href="#" uk-slider-item="next">  <ion-icon name="chevron-forward" class="text-2xl"></ion-icon> </a> {% endcomment %}
+                        
+                        </div>
+
+                        <!-- product list  -->
+                        <div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 mt-2"  uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 100">
+         
+                            <!-- single item -->
+                            
+                            {% for image in images %}
+                                
+                                
+                            <div>
+                                <a href="{% url 'image_info' image.imageid %}" class="group" >
+                                    <div class="relative overflow-hidden rounded-lg">
+                                        <div class="relative w-full md:h-60 h-56 transition-all group-hover:scale-110 duration-300">
+                                            <img src="{{ image.url.url }}" alt="" class="object-cover w-full h-full inset-0">
+                                        </div> 
+                                        <div class="absolute right-0 top-0 m-2 bg-slate-100 rounded-full py-0.5 px-2 text-sm font-bold dark:bg-slate-800/60"> ₹ {{ image.price }} </div>
+                                    </div> 
+                                </a>
+                                <div class="py-2">
+                                    <h4 class="text-black lg:font-medium mb-0.5 dark:text-white"> {{ image.title }} </h4>
+                                    <p class="md:text-sm text-xs lg:font-medium text-gray-500 dark:text-white"> by <a href="profile.html"> {{ image.user.user.username }} </a> </p>
+                                </div> 
+                            </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                    
+                    <!-- downloads -->
+                    <div>
+                        
+                        <!-- heading title -->
+                        <div class="mt-3 hidden">
+                            <a href="#" class="flex items-center gap-1 text-blue-500 font-semibold text-sm lg:-ml-1 mb-1">
+                                <ion-icon name="chevron-back-outline"></ion-icon> Back
+                            </a>
+                            <h2 class="text-2xl font-bold text-black dark:text-white"> Downloads</h1>
+                        </div>
+
+                        <div class="bg-white rounded-md shadow mt-6 dark:bg-dark2">
+                            
+                            <!-- heading -->
+                            <div class="p-3 md:px-6 border-b flex md:items-center justify-between dark:border-slate-700 max-md:flex-col gap-3"> 
+                                <h3 class="text-base font-semibold text-black dark:text-white">Item Purchased 16</h3> 
+                                
+                                <div class="flex bg-slate-100 border border-slate-200 p-[1px] rounded-lg dark:bg-dark3 dark:border-slate-700 ml-auto max-md:-mt-10">
+                                    <ion-icon name="list-outline" class="text-lg p-2 py-1.5 rounded-md bg-white shadow dark:bg-dark4"></ion-icon>
+                                    <ion-icon name="grid-outline" class="text-lg p-2 py-1.5"></ion-icon>
+                                </div>
+                                <div class="bg-slate-100 rounded-md flex items-center dark:bg-dark3 max-md:w-full">
+                                    <ion-icon name="search" class="text-lg ml-2"></ion-icon>
+                                    <input type="text" placeholder="Search" class="!h-8 w-full">
+                                </div>
+                                 
+                            </div>
+
+                            <!-- grid list -->
+                            <div class="grid lg:grid-cols-2 gap-2 md:p-4"  uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 100">
+
+ 
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-3.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Gaming Mouse </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">  John Michael </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+                                         
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-6.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Abstract art </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">  Jesse Steeve </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-1.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> The Deep Cleanse </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">  Jesse Steeve  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-2.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Regency High Gloss </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">  Martin Gray  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-4.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Abstract Minimalism   </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white"> James Lewis  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+ 
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-3.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Gaming Mouse </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white"> John Michael  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-3.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Gaming Mouse </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white"> John Michael  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+                                         
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-6.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Abstract art </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white"> Jesse Steeve  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-1.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> The Deep Cleanse </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white"> Jesse Steeve  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-2.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Regency High Gloss </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">   Martin Gray  </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-4.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Abstract Minimalism   </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">   James Lewis </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+ 
+                                <!-- item -->
+                                <div class="flex hover:bg-secondery rounded-md p-2 duration-500">
+
+                                    <!-- image -->
+                                    <a href="#product_modal" class="group" uk-toggle="">
+                                         <div class="relative overflow-hidden rounded-lg w-20">
+                                            <div class="relative w-full h-16">
+                                                <img src="assets/images/product/product-3.jpg" alt="" class="object-cover w-full h-full">
+                                            </div> 
+                                        </div> 
+                                    </a>
+
+                                    <!-- description -->
+                                    <div class="flex-1 px-4">
+                                        <h4 class="text-black font-medium mb-1 dark:text-white"> Gaming Mouse </h4>
+                                        <a href="profile.html"><p class="text-sm font-normal text-gray-500 dark:text-white">  John Michael </p></a>
+                                    </div>
+
+                                    <!-- download button -->
+                                    <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="cloud-download-outline"></ion-icon> </button>
+                                    
+                                    <!-- dropdown menu -->
+                                    <div>
+                                        <button type="button" class="hover:bg-secondery w-10 h-10 rounded-full grid place-items-center"> <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                        <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                            <nav>
+                                                <a href="#"> <ion-icon class="text-xl" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="albums-outline"></ion-icon>  add to collections </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="flag-outline"></ion-icon>  Report </a>  
+                                                <a href="#"> <ion-icon class="text-xl" name="share-outline"></ion-icon>  Share </a>  
+                                                <hr>
+                                                <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl" name="trash-outline"></ion-icon> Delete  </a>  
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                </div> 
+
+
+
+                            </div>
+
+                        </div>
+                        
+                        <!-- load more -->
+                        <div class="flex justify-center my-8">
+                            <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Load more...</button>
+                        </div>
+                
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </main>
+        
+    </div>
+
+ 
+    <!-- create new product button -->
+    {% comment %} <button type="button" class="fixed bottom-0 right-0 m-10" uk-toggle="target: #create_product" uk-tooltip="title:Add Product ; offset:10">
+        <div class="flex items-center justify-center w-14 h-14 bg-sky-500 rounded-full">
+            <ion-icon name="add-outline" class="text-white text-3xl"></ion-icon>
+        </div>
+    </button> {% endcomment %}
+
+    <!-- product modal -->
+    <div class="hidden lg:p-20 max-lg:!items-start" id="product_modal" uk-modal="">
+        
+        <div class="uk-modal-dialog tt relative mx-auto overflow-hidden shadow-xl rounded-lg lg:flex items-center ax-w-[86rem] w-full lg:h-[80vh]">
+          
+            <!-- image previewer -->
+            <div class="lg:h-full lg:w-[calc(100vw-400px)] w-full h-96 flex justify-center items-center relative">
+                
+                <div class="relative z-10 w-full h-full">
+                    <img src="assets/images/product/product-6.jpg" alt="" class="w-full h-full object-cover absolute">
+                </div>
+  
+                <!-- close button -->
+                <button type="button"  class="bg-white rounded-full p-2 absolute right-0 top-0 m-3 uk-animation-slide-right-medium z-10 dark:bg-slate-600 uk-modal-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+            </div>
+
+            <!-- right sidebar -->
+            <div class="lg:w-[400px] w-full bg-white h-full relative overflow-y-auto shadow-xl dark:bg-dark2">
+                
+                <div class="p-6">
+ 
+                    <div class="flex absolute right-2.5 top-4 text-black gap-1">
+                        <button class="w-8 h-8 hover:bg-slate-100 rounded-full grid place-items-center"> <ion-icon class="text-xl" uk-tooltip="title: Share; pos: top; offset: 6" name="share-outline"></ion-icon> </button>
+                        <button class="w-8 h-8 hover:bg-slate-100 rounded-full grid place-items-center"> <ion-icon class="text-xl" uk-tooltip="title: Save; pos: top; offset: 6" name="bookmarks-outline"></ion-icon> </button>
+                    </div>
+
+                    <div>
+                        <div class="text-lg font-semibold text-black dark:text-white"> Item Name </div>
+                        <p class="font-normal text-sm leading-6 mt-3"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, mollitia? Eaque consequuntur asperiores eos  Fugiat ullam </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-y-5 gap-3 text-xs font-medium mt-5">
+                        <div class="col-span-2 p-3 bg-slate-100 rounded-md space-y-1.5 border"> 
+                            <div> Price</div> 
+                            <div class="text-3xl font-semibold text-black"> $10 </div>
+                        </div>
+                        <div class="space-y-1.5"> <div> Views</div> <div class="text-2xl font-semibold text-black dark:text-white"> 1,286 </div></div>
+                        <div class="space-y-1.5"> <div> Donwloads</div> <div class="text-2xl font-semibold text-black dark:text-white"> 364 </div></div>
+                    </div>
+
+                    <div class="space-y-2 text-sm mt-7"> 
+                        <div class="flex items-center gap-3"> <ion-icon class="text-xl" name="tag-outline"></ion-icon> <div class="flex-1"> Category  Landscape  </div> </div>
+                        <div class="flex items-center gap-3"> <ion-icon class="text-xl" name="navigate-circle-outline"></ion-icon> <div class="flex-1"> Published   4 days ago  </div> </div>
+                        <div class="flex items-center gap-3"> <ion-icon class="text-xl" name="camera-outline"></ion-icon> <div class="flex-1"> Featured in  Editorial  </div> </div>
+                        <div class="flex items-center gap-3"> <ion-icon class="text-xl" name="image-outline"></ion-icon> <div class="flex-1"> type  Image </div> </div>
+                        <div class="flex items-center gap-3"> <ion-icon class="text-xl" name="shield-checkmark-outline"></ion-icon> <div class="flex-1"> Free to use under  Instello License </div> </div> 
+                    </div>
+
+                    <div class="font-medium mt-6 space-y-3">
+                        <div class="text-sm"> Seller </div> 
+                        <a href="#" class="flex items-center gap-3 mb-4 mt-1">
+                            <div class="relative w-8 h-8 shrink-0"> <img src="assets/images/avatars/avatar-4.jpg" alt="" class="object-cover w-full h-full rounded-full"></div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-sm font-medium text-black dark:text-white">Michel Emard</div>  
+                            </div>
+                            <button type="button" class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Chat </button>
+                        </a> 
+                    </div>
+                </div>
+
+                <div class="absolute bottom-0 w-full p-4"> 
+                    <div class="flex gap-2 items-center text-sm ">
+                        <a href="#" class="bg-teal-100 rounded-md py-2 text-center flex-1 flex items-center justify-center gap-2 text-teal-500 font-semibold"> <ion-icon class="text-2xl" name="cart-outline"></ion-icon> Buy</a>
+                        <a href="#" class="bg-red-100 rounded-md py-2 text-center px-3 flex"> <ion-icon class="text-2xl text-red-500" name="heart"></ion-icon> </a>
+                    </div>
+                </div>
+
+            </div>
+   
+        </div>
+        
+    </div>
+
+    
+    <!-- Uikit js you can use cdn  https://getuikit.com/docs/installation  or fine the latest  https://getuikit.com/docs/installation -->
+    <script src="{% static 'profiles/assets/js/uikit.min.js' %}"></script>
+    <script src="{% static 'profiles/assets/js/script.js' %}"></script>
+
+    <!-- Ion icon -->
+    <script type="module" src="../../unpkg.com/ionicons%405.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="../../unpkg.com/ionicons%405.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+
+ 
+
+</body>
+</html>

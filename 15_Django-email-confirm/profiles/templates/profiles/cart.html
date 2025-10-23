@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      background: #eee;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .clearfix {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    #site-header,
+    #site-footer {
+      background: #fff;
+    }
+
+    #site-header {
+      margin: 0 0 30px 0;
+    }
+
+    #site-header h1 {
+      font-size: 31px;
+      font-weight: 300;
+      padding: 40px 0;
+      position: relative;
+      margin: 0;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+      transition: color .2s linear;
+    }
+
+    a:hover {
+      color: #53b5aa;
+    }
+
+    #site-header h1 span {
+      color: #53b5aa;
+    }
+
+    #site-header h1 span.last-span {
+      background: #fff;
+      padding-right: 150px;
+      position: absolute;
+      left: 217px;
+      transition: all .2s linear;
+    }
+
+    #site-header h1:hover span.last-span,
+    #site-header h1 span.is-open {
+      left: 363px;
+    }
+
+    #site-header h1 em {
+      font-size: 16px;
+      font-style: normal;
+      vertical-align: middle;
+    }
+
+    .container {
+      margin: 0 auto;
+      width: 980px;
+    }
+
+    #cart {
+      width: 100%;
+    }
+
+    #cart h1 {
+      font-weight: 300;
+    }
+
+    #cart a {
+      color: #53b5aa;
+      text-decoration: none;
+      transition: color .2s linear;
+    }
+
+    #cart a:hover {
+      color: #000;
+    }
+
+    .product.removed {
+      margin-left: 980px !important;
+      opacity: 0;
+    }
+
+    .product {
+      border: 1px solid #eee;
+      margin: 20px 0;
+      width: 100%;
+      height: 195px;
+      position: relative;
+      transition: margin .2s linear, opacity .2s linear;
+    }
+
+    .product img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .product header,
+    .product .content {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-style: none none solid none;
+      float: left;
+    }
+
+    .product header {
+      background: #000;
+      margin: 0 1% 20px 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      width: 24%;
+      height: 195px;
+    }
+
+    .product header:hover img {
+      opacity: .7;
+    }
+
+    .product header:hover h3 {
+      bottom: 73px;
+    }
+
+    .product header h3 {
+      background: #53b5aa;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 49px;
+      margin: 0;
+      padding: 0 30px;
+      position: absolute;
+      bottom: -50px;
+      right: 0;
+      left: 0;
+      transition: bottom .2s linear;
+    }
+
+    .remove {
+      cursor: pointer;
+    }
+
+    .product .content {
+      box-sizing: border-box;
+      height: 140px;
+      padding: 0 20px;
+      width: 75%;
+    }
+
+    .product h1 {
+      color: #53b5aa;
+      font-size: 25px;
+      font-weight: 300;
+      margin: 17px 0 20px 0;
+    }
+
+    .product footer.content {
+      height: 50px;
+      margin: 6px 0 0 0;
+      padding: 0;
+    }
+
+    .product footer .price {
+      background: #fcfcfc;
+      color: #000;
+      float: right;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 49px;
+      margin: 0;
+      padding: 0 30px;
+    }
+
+    .product footer .full-price {
+      background: #53b5aa;
+      color: #fff;
+      float: right;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 49px;
+      margin: 0;
+      padding: 0 30px;
+      transition: margin .15s linear;
+    }
+
+    .qt,
+    .qt-plus,
+    .qt-minus {
+      display: block;
+      float: left;
+    }
+
+    .qt {
+      font-size: 19px;
+      line-height: 50px;
+      width: 70px;
+      text-align: center;
+    }
+
+    .qt-plus,
+    .qt-minus {
+      background: #fcfcfc;
+      border: none;
+      font-size: 30px;
+      font-weight: 300;
+      height: 100%;
+      padding: 0 20px;
+      transition: background .2s linear;
+    }
+
+    .qt-plus:hover,
+    .qt-minus:hover {
+      background: #53b5aa;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .qt-plus {
+      line-height: 50px;
+    }
+
+    .qt-minus {
+      line-height: 47px;
+    }
+
+    #site-footer {
+      margin: 30px 0 0 0;
+      padding: 40px;
+    }
+
+    #site-footer h1 {
+      background: #fcfcfc;
+      border: 1px solid #ccc;
+      border-style: none none solid none;
+      font-size: 24px;
+      font-weight: 300;
+      margin: 0 0 7px 0;
+      padding: 14px 40px;
+      text-align: center;
+    }
+
+    #site-footer h2 {
+      font-size: 24px;
+      font-weight: 300;
+      margin: 10px 0 0 0;
+    }
+
+    #site-footer h3 {
+      font-size: 19px;
+      font-weight: 300;
+      margin: 15px 0;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    .btn {
+      background: #53b5aa;
+      border: 1px solid #999;
+      border-style: none none solid none;
+      cursor: pointer;
+      display: block;
+      color: #fff;
+      font-size: 20px;
+     
+    }
+
+  </style>
+</head>
+<body>
+<header id="site-header">
+    <div class="container">
+      <h1>Shopping cart <span>[</span> <em><a href="https://codepen.io/tag/rodeo-007" target="_blank">{{ request.user.username }}</a></em> <span class="last-span is-open">]</span></h1>
+    </div>
+  </header>
+
+  <div class="container">
+    <section id="cart"> 
+      {% for cart in carts %}
+      <article class="product">
+        <header>
+          <a href="{% url 'remove_cart' imageid=cart.cartId %}" class="remove">
+            <img src="{{ cart.ImageId.url.url }}" alt="">
+            <h3>Remove product</h3>
+          </a>
+        </header>
+        <div class="content">
+          <a href="{% url 'image_info' cart.ImageId.imageid %}"><h1>{{ cart.ImageId.title }}</h1></a>
+          <p>{{ cart.ImageId.description }}</p>
+          <div title="You have selected this product to be shipped in the color yellow." style="top: 0" class="color yellow"></div>
+        </div>
+        <footer class="content">
+          <h2 class="full-price">{{ cart.ImageId.price }}</h2>
+          <h2 class="price">{{ cart.ImageId.price }}</h2>
+        </footer>
+      </article>
+      {% endfor %}
+    </section>
+  </div>
+  
+
+  <footer id="site-footer">
+    <div class="container clearfix">
+      {% comment %} <div class="left">
+        <h2 class="subtotal">Subtotal: <span></span>€</h2>
+      </div> {% endcomment %}
+      <div class="right">
+        <h1 class="total">Total: <span></span>€</h1>
+        <a class="btn" href="/profiles/checkout/">Checkout</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
+  <script>
+    $(document).ready(function () {
+
+      var subtotal = 0;
+    $('.price').each(function() {
+      var price = parseFloat($(this).text());
+      subtotal += price;
+    });
+    $('.total span').text(subtotal.toFixed(2));
+
+
+      $(".remove").click(function () {
+        var el = $(this);
+        el.parent().parent().addClass("removed");
+        window.setTimeout(
+          function () {
+            el.parent().parent().slideUp('fast', function () {
+              el.parent().parent().remove();
+              if ($(".product").length == 0) {
+                if (check) {
+                  $("#cart").html("<h1>The shop does not function, yet!</h1><p>If you liked my shopping cart, please take a second and heart this Pen on <a href='https://codepen.io/ziga-miklic/pen/xhpob'>CodePen</a>. Thank you!</p>");
+                } else {
+                  $("#cart").html("<h1>No products!</h1>");
+                }
+              }
+              changeTotal();
+            });
+          }, 200);
+      });
+
+     
+       // window.setTimeout(function () { $(".is-open").removeClass("is-open") }, 1200);
+
+        //$(".btn").click(function () {
+          //check = true;
+          //$(".remove").click();
+        //});
+
+    });
+  </script>
+</body>
+</html>

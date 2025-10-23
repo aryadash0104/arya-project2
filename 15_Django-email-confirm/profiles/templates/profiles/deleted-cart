@@ -1,0 +1,31 @@
+(document).ready(function () {
+
+    var check = false;
+
+    function changeVal(el) {
+      var price = parseFloat(el.parent().children(".price").html());
+
+      el.parent().children(".full-price").html(eq + "₹");
+
+      changeTotal();
+    }
+
+    function changeTotal() {
+
+      var price = 0;
+
+      $(".full-price").each(function (index) {
+        price += parseFloat($(".full-price").eq(index).html());
+      });
+
+      price = Math.round(price * 100) / 100;
+      var fullPrice = Math.round((price + tax + shipping) * 100) / 100;
+
+      if (price == 0) {
+        fullPrice = 0;
+      }
+
+      $(".subtotal span").html(price);
+      $(".tax span").html(tax);
+      $(".total span").html(fullPrice);
+    }

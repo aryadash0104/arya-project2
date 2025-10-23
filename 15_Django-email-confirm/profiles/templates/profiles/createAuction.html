@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Auction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Create Auction</h2>
+        <form method="post" action="{% url 'create_auction' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="image_id">Select Image:</label>
+                <select class="form-control" id="image_id" name="image_id">
+                    {% for image in user_images %}
+                        <option value="{{ image.imageid }}">{{ image.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="auction_amount">Auction Amount:</label>
+                <input type="text" class="form-control" id="auction_amount" name="auction_amount">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Auction</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

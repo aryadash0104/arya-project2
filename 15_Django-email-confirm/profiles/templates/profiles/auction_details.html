@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bid Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bid-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .bid-details {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .bid-form {
+            width: 300px;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        .auction-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .bid-history {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="auction-card">
+                    <h2>{{ auction.ImageId.title }}</h2>
+                    <img src="{{ auction.ImageId.url.url }}" alt="{{ auction.ImageId.title }}" class="img-fluid">
+                    <div class="mt-4">
+                        <h4>Highest Bid: INR {{ highest_bid.amount }}</h4>
+                        <h4>Base Amount: INR {{ auction.AuctionAmount }}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="auction-card">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {% if auction.ImageId.user != request.user.userprofile %}
+                            {% if  auction.status == 'ENDED' %}
+                                <h1>Auction has been ended</h1>
+                            {% else %}
+                                <h3>Place Your Bid</h3>
+                                <div class="form-group">
+                                    <label for="bid_amount">Bid Amount:</label>
+                                    <input type="text" class="form-control" id="bid_amount" name="bid_amount">
+                                </div>
+                                {% if existing_bid %}
+                                    <button type="submit" name="action" value="update" class="btn btn-danger">Update Bid</button>
+                                {% else %}
+                                    <button type="submit" name="action" value="submit" class="btn btn-primary">Submit Bid</button>
+                                {% endif %}
+                            {% endif %}
+                        {% elif auction.status != 'ENDED' and auction.ImageId.user == request.user.userprofile %}
+                            <button type="submit" name="action" value="end" class="btn btn-warning">End Auction Now</button>
+                        {% else %}
+                            <h1>Auction Has been ended</h1>
+                        {% endif %}
+
+                        {% if auction.winner == request.user.userprofile %}
+                            {% if auction.status == 'ENDED' and auction.payment_status == 'pending' %}
+                                <button type="button" id="rzp-button2" class="btn btn-success w-100 mt-3">Pay with RazorPay</button>
+                                {% else %}
+                                <h2>Payment has been Successfull</h2>
+                            {% endif %}
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="bid-history mt-4">
+                    <h3>Bid History</h3>
+                    <ul class="list-group">
+                        {% for bid in bid_history %}
+                            <li class="list-group-item">User: {{ bid.userid.user.username }} - Amount: INR {{ bid.amount }}</li>
+                        {% empty %}
+                            <li class="list-group-item">No bids yet</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
+    <script>
+        var razorPayBtn = document.getElementById('rzp-button2');
+    
+        razorPayBtn.addEventListener('click', function(e) {
+            var options = {
+                key: 'rzp_test_MP1ouUpRe69TNK', // Your Razorpay API key
+                amount: {{ auction.AuctionAmount }}, // Amount to be paid in paise
+                currency: 'INR', // Currency
+                name: '{{ auction.ImageId.title }}', // Name of the auction
+                description: 'Payment for auction',
+                prefill: {
+                    name: '{{ auction.winner.user.username }}', // Prefill user's name
+                    email: '{{ auction.winner.user.email }}', // Prefill user's email
+                },
+                handler: function(response) {
+                    // Extract payment information
+                    var payment_id = response.razorpay_payment_id;
+                    console.log('Payment ID:', payment_id);
+                    var auction_id = '{{ auction.auctionId }}'; // Get the auction ID from your HTML template
+                    console.log('Auction ID:', auction_id);
+                    
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/profiles/update_auction_status/", true); // Update the URL according to your Django view
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            if (xhr.status === 200) {
+                                // Auction status updated successfully
+                                console.log('Auction status updated successfully');
+                                console.log(xhr.responseText);
+                                // You can redirect the user to a success page or update the UI as needed
+                            } else {
+                                // Handle error response
+                                console.error('Failed to update auction status');
+                            }
+                        }
+                    };
+                    var data = JSON.stringify({"auction_id": auction_id, "payment_id": payment_id});
+                    xhr.send(data);
+                },
+                
+                
+                theme: {
+                    color: '#528FF0' // Color for the payment button
+                }
+            };
+    
+            var rzp = new Razorpay(options);
+            rzp.open();
+            e.preventDefault();
+        });
+    </script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

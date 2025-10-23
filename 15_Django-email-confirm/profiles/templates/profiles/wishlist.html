@@ -1,0 +1,129 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Wishlist Page AuctioPix</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    
+    <!-- CSS 
+    ========================= -->
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'wishlist/css/bootstrap.min.css' %}">
+    
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="{% static 'wishlist/css/material-design-iconic-font.min.css' %}">
+    
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'wishlist/css/plugins.css' %}">
+    
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'wishlist/css/style.css' %}">
+    
+    <!-- Modernizer JS -->
+    <script src="{% static 'wishlist/js/vendor/modernizr-3.6.0.min.js' %}"></script>
+</head>
+
+<body>
+
+<!-- Main Wrapper Start -->
+<div class="main-wrapper">
+    
+    
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-area" data-bgimage="assets/images/bg/breadcrumb-bg-01.jpg" data-black-overlay="4">
+        <div class="container">
+            <div class="in-breadcrumb">
+                <div class="row">
+                    <div class="col">
+                        <h3>Wishlist Page</h3>
+                        <!-- breadcrumb-list start -->
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="/profiles/">Home</a></li>
+                            <li class="breadcrumb-item active">Wishlist</li>
+                        </ul>
+                        <!-- breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// Breadcrumb -->
+    
+    
+    
+    <!-- Page Conttent -->
+    <main class="page-content">
+       
+        <div class="wishlist-main-content section-ptb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="#" class="cart-table">
+                            <div class=" table-content table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="plantmore-product-thumbnail">Images</th>
+                                            <th class="cart-product-name">Product</th>
+                                            <th class="plantmore-product-price">Unit Price</th>
+                                            <th class="plantmore-product-add-cart">Add to cart</th>
+                                            <th class="plantmore-product-remove">Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for wish in wishlist %}
+                                            
+                                            
+                                        <tr>
+                                            <td class="plantmore-product-thumbnail"><a href="{% url 'image_info' wish.ImageId.imageid %}"><img src="{{ wish.ImageId.url.url }}" alt=""></a></td>
+                                            <td class="plantmore-product-name"><a href=""></a>{{ wish.ImageId.title }}</td>
+                                            <td class="plantmore-product-price"><span class="amount"></span>{{ wish.ImageId.price }}</td>
+                                            <td class="plantmore-product-add-cart"><a href="{% url 'add_to_cart' imageid=wish.ImageId.imageid %}">add to cart</a></td>
+                                            <td class="plantmore-product-remove"><a href="{% url 'remove_wishlist' imageid=wish.wishlistId %}"><i class="zmdi zmdi-close"></i></a></td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--// Page Conttent -->
+    
+    <!--// Footer Area -->
+    
+    
+</div>
+<!-- Main Wrapper End -->
+
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="{% static 'wishlist/./js/vendor/jquery-3.3.1.min.js' %}"></script>
+<!-- Popper JS -->
+<script src="{% static 'wishlist/./js/popper.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'wishlist/./js/bootstrap.min.js' %}"></script>
+<!-- Plugins JS -->
+<script src="{% static 'wishlist/./js/plugins.js' %}"></script>
+<!-- Ajax Mail -->
+<script src="{% static 'wishlist/./js/ajax-mail.js' %}"></script>
+<!-- Main JS -->
+<script src="{% static 'wishlist/./js/main.js' %}"></script>
+
+
+</body>
+
+</html>
